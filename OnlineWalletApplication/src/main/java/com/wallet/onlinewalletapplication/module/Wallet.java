@@ -23,9 +23,9 @@ public class Wallet {
 	@OneToOne(cascade = CascadeType.ALL)
 	private Bank bank;
 	
-	@JsonIgnore
-	@Embedded
-	private List<Beneficiary> beneficiary = new ArrayList<>();
+//	@JsonIgnore
+//	@Embedded
+//	private List<Beneficiary> beneficiary = new ArrayList<>();
 	
 	@JsonIgnore
 	@OneToMany
