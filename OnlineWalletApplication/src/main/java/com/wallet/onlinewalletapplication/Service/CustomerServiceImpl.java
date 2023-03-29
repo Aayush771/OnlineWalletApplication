@@ -1,7 +1,8 @@
 package com.wallet.onlinewalletapplication.Service;
 
-import com.wallet.onlinewalletapplication.Entity.Customer;
+
 import com.wallet.onlinewalletapplication.Repository.CustomerRepository;
+import com.wallet.onlinewalletapplication.module.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

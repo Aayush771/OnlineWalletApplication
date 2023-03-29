@@ -1,6 +1,7 @@
 package com.wallet.onlinewalletapplication.Repository;
 
-import com.wallet.onlinewalletapplication.Entity.Customer;
+
+import com.wallet.onlinewalletapplication.module.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
