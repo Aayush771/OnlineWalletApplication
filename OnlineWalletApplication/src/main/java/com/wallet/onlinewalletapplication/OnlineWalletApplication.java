@@ -10,14 +10,12 @@ import io.swagger.v3.oas.annotations.servers.Server;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication
-@OpenAPIDefinition(info = @Info(title = "Payment Wallet Application", version = "1.1"),
-        security = {
-                @SecurityRequirement(name = "basicAuth"),
-                @SecurityRequirement(name = "bearerToken")
-        },
+@OpenAPIDefinition(info = @Info(title = "REST API", version = "1.1"),
+        security = { @SecurityRequirement(name = "basicAuth"),
+                @SecurityRequirement(name = "bearerToken") },
         servers = { @Server(url = "/", description = "Default Server URL")
-        }
+}
+
 )
 
 @SecuritySchemes({
@@ -25,7 +23,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
                 type = SecuritySchemeType.HTTP, scheme = "basic"),
         @SecurityScheme(name = "bearerToken", type = SecuritySchemeType.HTTP,
                 scheme = "bearer", bearerFormat = "JWT")
-})
+}
+)
+@SpringBootApplication
 public class OnlineWalletApplication {
 
     public static void main(String[] args) {

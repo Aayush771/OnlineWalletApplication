@@ -11,7 +11,10 @@ public class CustomerController {
 	
 	@Autowired
 	private CustomerServiceImpl customerServiceImpl;
-	
+	@GetMapping("/hello")
+	public String sayHello(){
+		return "Welcome to Online wallet Application";
+	}
 	// to register user
 	@PostMapping(value = "/customer")
 	public Customer saveCustomer(@Valid @RequestBody Customer customer) {

@@ -2,6 +2,7 @@ package com.wallet.onlinewalletapplication.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -12,23 +13,36 @@ import org.springframework.security.web.SecurityFilterChain;
 public class WallectSecurityConfig {
 
     @Bean
-    public SecurityFilterChain mySecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
+    public SecurityFilterChain mySecurityFilterChain(HttpSecurity http) throws Exception {
 
-        httpSecurity.authorizeHttpRequests((auth)-> {
-                    try {
-                        auth
-                                        .requestMatchers("/login","/customer","/swagger-ui/index.html#/").permitAll()
-                                        .requestMatchers("/bank","/bankbalance","/walletbalance","/addmoney","/deposit","/transfer").authenticated()
-                                        .and()
-                                        .csrf().disable().formLogin();
-                    } catch (Exception e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-                ).httpBasic(Customizer.withDefaults());
+//        httpSecurity.authorizeHttpRequests((auth)-> {
+//                    try {
+//                        auth
+//                                .requestMatchers("/login","/customer").permitAll()
+//                                .requestMatchers("/swagger-ui*/**","/v3/api/docs/**").permitAll()
+//                                .anyRequest().authenticated()
+//                                        .and()
+//                                        .csrf().disable().formLogin();
+//                    } catch (Exception e) {
+//                        throw new RuntimeException(e);
+//                    }
+//                }
+//                ).httpBasic(Customizer.withDefaults());
+//
+//        return httpSecurity.build();
 
-        return httpSecurity.build();
+        http
 
+                .csrf().disable()
+                .authorizeHttpRequests()
+                .requestMatchers("/swagger-ui*/**","/v3/api-docs/","/hello","/customer").permitAll()
+                .requestMatchers(HttpMethod.POST, "/customer").permitAll()
+                .anyRequest().authenticated().and()
+                .formLogin()
+                .and()
+                .httpBasic(Customizer.withDefaults());
+
+        return http.build();
     }
 
     @Bean
