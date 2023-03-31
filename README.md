@@ -1,11 +1,11 @@
-# Payment-Wallet-Application
+# Online Wallet Application
 Backend of every online payment application via wallet is there
 
 ![ER Diagram](https://user-images.githubusercontent.com/97376332/170175007-deb844d8-c3fb-4cbd-88f1-7ebd8b7cc718.png)
 
 
 . After running this program in spring boot we have to hit this url to see all the API's in swagger 
-http://localhost:8089/swagger-ui.html#/
+https://onlinewalletapplication-production.up.railway.app/swagger-ui/index.html#/
 
 ONLINE WALLET PAYMENT APP | Online Wallet Payment Application where you can send and receive money and pay different bills. Java, Spring Boot, MySQL, used to generate different end points. Features:
 
@@ -19,7 +19,7 @@ ONLINE WALLET PAYMENT APP | Online Wallet Payment Application where you can send
 1. Built authentication while login and logout using key.
 2. Stored the data on MySQL and used it for Authentication.
 3. Deployed the website on GitHub.
-4. collaborative project built by a team of 3, delivered in 6 days.
+4. A solo project created in 5 days.
 
 
 <table>
