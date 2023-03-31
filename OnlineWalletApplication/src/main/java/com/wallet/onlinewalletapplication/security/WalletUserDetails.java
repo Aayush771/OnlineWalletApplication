@@ -18,7 +18,7 @@ public class WalletUserDetails implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<Customer> customer = customerDAO.findCustomerByEmail(username);
+        Optional<Customer> customer = customerDAO.findByMobileNo(username);
         if (customer.isEmpty()) {
             throw new UsernameNotFoundException("User details not found for the user : " + username);
         }

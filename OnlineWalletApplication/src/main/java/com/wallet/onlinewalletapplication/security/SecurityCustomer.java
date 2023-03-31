@@ -34,7 +34,7 @@ public class SecurityCustomer implements UserDetails {
 
     @Override
     public String getUsername() {
-        return customer.getEmail();
+        return customer.getMobileNo();
     }
 
     public Wallet getWallet() {

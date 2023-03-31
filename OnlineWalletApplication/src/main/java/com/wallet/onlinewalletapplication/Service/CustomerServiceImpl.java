@@ -47,8 +47,18 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer updateCustomer(Customer customer) {
 
         if (getCurrentLoginUserDetails.checkLogin()) {
-            customerDAO.save(customer);
-            return customer;
+            Optional<Customer> opt = customerDAO.findByMobileNo(customer.getMobileNo());
+
+            if (opt.isPresent()) {
+                Customer customer1 = opt.get();
+                customer1.setEmail(customer.getEmail());
+                customer1.setName(customer.getName());
+                customer1.setRole(customer.getRole());
+               return customerDAO.save(customer1);
+            }else{
+                throw new UserAlreadyExistWithMobileNumber("User don't exist with this mobile number");
+            }
+
         } else {
             throw new NotFoundException("No user found.. try login first");
         }
