@@ -17,7 +17,7 @@ public class CustomerController {
 	}
 	// to register user
 	@PostMapping(value = "/customer")
-	public Customer saveCustomer(@Valid @RequestBody Customer customer) {
+	public Customer saveCustomer(@RequestBody Customer customer) {
 		return customerServiceImpl.createCustomer(customer);
 	}
 	

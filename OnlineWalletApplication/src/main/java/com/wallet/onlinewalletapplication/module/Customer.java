@@ -5,11 +5,15 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer {
 	
 	@Id
@@ -33,7 +37,7 @@ public class Customer {
 	private String role;
 
 	@JsonIgnore
-	@OneToOne(optional = false, cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	private Wallet wallet;
 
 	@Override

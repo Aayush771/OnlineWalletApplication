@@ -35,12 +35,12 @@ public class WallectSecurityConfig {
 
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/swagger-ui*/**","/v3/api-docs/","/hello","/customer").permitAll()
+                .requestMatchers("/swagger-ui*/**","/v3/api-docs/**","/customer").permitAll()
                 .requestMatchers(HttpMethod.POST, "/customer").permitAll()
                 .anyRequest().authenticated().and()
                 .formLogin()
                 .and()
-                .httpBasic(Customizer.withDefaults());
+                .httpBasic();
 
         return http.build();
     }
